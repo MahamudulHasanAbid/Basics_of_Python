@@ -1,0 +1,2 @@
+'''Problem 19: Create a program that combines two dictionaries into one, but if a key exists in both dictionaries, sum their values.
+    - Guideline: Iterate through both dictionaries and use conditional statements to handle the merging logic.'''
