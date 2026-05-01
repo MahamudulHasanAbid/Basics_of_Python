@@ -112,6 +112,33 @@ def print_info(**kwargs):
         print(key, value)
 res = print_info(name='bob', age=12)
 
+# Generate a python list of all the even numbers between 4 to 30
+def evenlist(start=4, end=30):
+    
+    return list(range(start, end+1, 2))
+
+res = evenlist()
+print(res)
+
+# Or We can do this....
+def evlist(a=4, b=30):
+    return [i for i in range(a, b+1) if i%2==0]
+res = evlist()
+print(res)
+
+# Find the largest
+def largest(n):
+    large_num= n[0]
+    for i in n:
+        if i>large_num:
+            large_num=i
+    return large_num
+        
+num = [1,12,3,4,5]
+print(num)
+res = largest(num)
+print(res)
+
 # Write a recursive function to calculate the factorial of a non-negative integer.
 def fact(n):
     if n<0:
@@ -119,6 +146,7 @@ def fact(n):
     return n * fact(n-1) if n>0 else 1
 res = fact(3)
 print(res)
+
 # Exercise 14: Create a lambda function that squares a given number
    #lambda arguments: expression
 square = lambda x: x**2
