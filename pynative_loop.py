@@ -175,4 +175,113 @@ while num>0:
 print("Largest digit:", largest)
 print("Smallest digit:", smallest)
 
+#Exercise 16. Check If a number palindrome or not
+num = int(input("Validate your number if it is a palindrome: "))
+temp = num
+rev_num = 0
+while num>0:
+    digit = num%10
+    rev_num = (rev_num*10) + digit
+    num = num // 10
+if rev_num == temp:
+    print("The number is a palindrome")
+else:
+    print("The number is not a palindrome")
+
+#Exercise 17. Find factorial of a number 
+num = int(input("Input your number: "))
+fact=1
+if num<0:
+    print("For negative number, there is no factorial value")
+elif num==0:
+    print("The factorial of 0 is 1")
+else:
+    for i in range(1, num+1):
+        fact *= i
+
+print(f"The factorial of {num} is {fact}")
+
+#Exercise 18. "Collatz Conjecture"- A sequence that eventually reach 1
+# Start with any integer. If it is even then divide it by 2,If odd then multiply by 3 and add 1
+
+num= int(input("Enter a number: "))
+print(num, end="")
+while num !=1:
+    if num%2 == 0:
+        num = num//2
+    else:
+        num = (num*3)+1
+    print(f", {num}", end ="")
+
+#Exercise 19. "Armstrong Number"- 153 = 1^3+5^3+3^3
+num= int(input("Enter a number: "))
+total = 0
+power= len(str(num))
+for i in str(num):
+    total += int(i) ** power
+if total == num:
+    print("Armstrong Number")
+else:
+    print("Normal Number.")
+
+#Exercise 20. Print right-angled triangle number pattern using a loop.
+
+line = int(input("Enter how many line we would like to have: "))
+
+for i in range(1, line+1):
+    for j in range(1, i+1):
+        print(j, end=' ')
+    print('')
+
+# Exercise 21. Print the decrising pattern
+
+for i in range(5,0,-1):
+    for j in range(i, 0,-1):
+        print(j, end=' ')
+    print('')
+
+# Exercise 22. Print the alternate numbers from 1 to 20 (Pattern)
+for i in range(1,21,2):
+    print(i, end=' ')
+
+#Exercise 23. Alphabet  Pattern.
+ascii_val= 65
+for i in range(6):
+    letter = chr(ascii_val+i)
+    for j in range(i+1):
+        print(letter, end=' ')
+    print('')
+
+# Exercise 24. Print a hollow square pattern
+for i in range(5):
+    for j in range(5):
+        if i==0 or i==4 or j==0 or j==4:
+            print('*', end=' ')
+        else:
+            print(' ', end=' ')
+    print('')
+
+# Exercise 25. Print pyramid pattern of stars
+for i in range(1,6):
+    for j in range(i):
+        print('*', end=' ')
+    print()
+for k in range(4,0,-1):
+    for l in range(k):
+        print('*', end=' ')
+    print()
+
+# Full pyramid
+rows= 5
+for i in range(1,rows+1):
+    # for space
+    for j in range(rows-i):
+        print(" ", end=' ')
+    
+    # for star
+    for k in range(2*i-1):
+        print("* ", end=' ')
+    
+    print()
+
 
