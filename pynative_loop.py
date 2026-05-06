@@ -281,7 +281,35 @@ for i in range(1,rows+1):
     # for star
     for k in range(2*i-1):
         print("* ", end=' ')
-    
     print()
+
+# Exercise 26. Print full multiplication table(1 to 10)
+for i in range(1,11):
+    for j in range(1,11):
+        print(f'{i*j}', end=' ')
+    print(end='\n...\n')
+
+# Exercise 27. Each element is the sum of all previous from a list.
+num=[1,2,3,4]
+print(f"Original list: {num}")
+current_sum = 0
+cumulative_list = []
+for i in num:
+    current_sum += i
+    cumulative_list.append(current_sum)
+
+print(f"Cumulative Sum: {cumulative_list}")
+
+# Exercise 28. Dictionary filter: Extract pairs where value exceeds a threshold.
+# Practice Problem: Given a dictionary of student scores, create a new dictionary 
+# that only includes students who scored above a certain threshold (e.g., 75).
+
+scores = {"Alice":85, "Bob": 70, "Charlie":95, "David": 60}
+threshold = 75
+Passing_std = {}
+for i,j in scores.items():
+    if j>=75:
+        Passing_std[i] = j
+print(f"Passing Students: {Passing_std}")
 
 
