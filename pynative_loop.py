@@ -312,4 +312,47 @@ for i,j in scores.items():
         Passing_std[i] = j
 print(f"Passing Students: {Passing_std}")
 
+# Exercise 29. Find common elements (Intersection) using loop
+# Practice Problem: Given two lists, find the elements that appear in both. Do not use Python’s built-in set().intersection() method.
+list_a = [1,2,3,4,5]
+list_b = [4,5,6,7,8]
+
+common_list = []
+
+for i in list_a:
+    if i in list_b:
+        common_list.append(i)
+print(common_list)
+
+# Exercise 30. Remove duplicates without set 
+# Practice Problem: Write a program to remove all duplicate values from a list using a loop, 
+# maintaining the original order of elements.
+
+n_list = list(map(int, input("Enter your choice of numbers: \n").split()))
+print(n_list)
+res = set(n_list)
+Unique_list = list(res)
+print(Unique_list)
+# another way to deal with the problem.
+
+num=[1,2,3,3,2,5,6]
+print(num)
+unique_lst=[]
+for i in num:
+    if i not in unique_lst:
+        unique_lst.append(i)
+
+print(unique_lst)
+
+# Exercise 31. Even/Odd segregation: Move evens to front, odds to back
+num = [1,2,3,4,5,6]
+odd=[]
+even=[]
+for i in num:
+    if i%2==0:
+        even.append(i)
+    else:
+        odd.append(i)
+even.extend(odd) #new_list = even + odd
+print(f"Segregated List: {even}") # print(new_list)
 
