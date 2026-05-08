@@ -435,3 +435,38 @@ for i in range(start,end+1):
 
     if is_prime and i>1:
         print(i, end=' ')
+
+# Exercise 38. Find the sum of the series up to n terms
+# Practice Problem: Write a program to calculate the sum of the series 2 + 22 + 222 + 2222 + …. up to N terms. 
+# For example, if n=5, the series is 2 + 22 + 222 + 2222 + 22222.
+n= 5
+start = 2
+sum = 0
+for i in range(0, n):
+    sum += start
+    start = (start*10) + 2
+print(sum)
+
+# Exercise 39. Flatten a nested list using loops
+# Practice Problem: Given a nested list (a list containing other lists), 
+# write a program to “flatten” it into a single list containing all the individual elements
+
+nested_list = [[10,20],[30,40],[50,60]]
+flattened = []
+
+for i in nested_list:
+    for j in i:
+        flattened.append(j)
+print(flattened)
+
+# Exercise 40. Nested list search(2D matrix coordinates)
+# Practice Problem: Given a 2D list (matrix), 
+# find the row and column index of a target value.
+
+matrix=[[10,20],[30,40],[50,60]]
+target = 60
+
+for r_indx, row in enumerate(max):
+    for c_indx, col in enumerate(row):
+        if col == target:
+            print(f"Target {target} found at row {r_indx} and column {c_indx}")
