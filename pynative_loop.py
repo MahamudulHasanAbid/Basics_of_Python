@@ -356,3 +356,82 @@ for i in num:
 even.extend(odd) #new_list = even + odd
 print(f"Segregated List: {even}") # print(new_list)
 
+
+# Exercise 32. List Rotation: Rotate elements left by k positions
+# Practice Problem: Given a list and an integer k, rotate the list to the left by k positions.
+# For example, if k=2, the first two elements move to the end of the list.
+
+nums= [1,2,3,4,5]
+k=2
+part=nums[k:]
+print(part)
+rotated = nums[k:] + nums[:k]
+print(rotated)
+
+# Exercise 33. Word frequency counter
+# Practice Problem: Write a program to count the frequency 
+# of each word in a given string.
+text= "apple banana mango orange palm guava"
+words =  text.split() #change the text into the list.
+print(words)
+
+freq = {}
+
+for i in words:
+    if i in freq:
+        freq[i] += 1
+    else:
+        freq[i] = 1
+print(freq)
+
+# Exercise 34: Display fibonacci series up to 10 terms
+# Practice Problem: Write a program to display the Fibonacci sequence up to 10 terms. 
+# The sequence starts with 0 and 1, and each subsequent number is the sum of the two preceding ones.
+n_terms = 10
+num1 = 0
+num2 = 1
+for i in range(10):
+    print(num1, end=' ')
+    res = num1+num2
+    num1=num2
+    num2=res
+
+# Exercise 35: Perfect number check
+# Practice Problem: Write a program to check if a number is a “Perfect Number.” 
+# A perfect number is a positive integer that is equal to the sum of its proper divisors (excluding the number itself).
+# For example, 6 is perfect because 1 + 2 + 3 = 6
+num = int(input("Enter a positive number: "))
+divisor_sum = 0
+for i in range(1,(num//2)+1):
+    if num%i == 0:
+        divisor_sum += i
+    else:
+        pass
+if divisor_sum == num:
+    print(f"{num} is a perfect number.")
+else:
+    print(f"{num} is not a perfect number.")
+    
+# Exercise 36. Binary to decimal using loop
+binary_str = '10101'
+decimal= 0
+rev_string= binary_str[::-1]
+for i in range(len(rev_string)):
+    if rev_string[i] == '1':
+        decimal += 2**i
+
+print(f"Decimal of {binary_str} is : {decimal}")
+
+# Exercise 37. Display all prime numbers within a range.
+start = 25
+end = 50
+
+for i in range(start,end+1):
+    is_prime = True
+    for j in range(2, i):
+        if i%j == 0:
+            is_prime = False
+            break
+
+    if is_prime and i>1:
+        print(i, end=' ')
