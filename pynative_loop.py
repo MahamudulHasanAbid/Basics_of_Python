@@ -107,7 +107,7 @@ for i in reversed(my_list):
 
 # string= 'python'
 # val= len(string)
-# new_str = ''
+# new_str = '' 
 # for i in range(val-1, -1, -1):
 #     new_str += string[i]
 # print(new_str)
@@ -126,7 +126,7 @@ vowel_list = 'aeiou'
 vowel= 0
 consonant=0
 
-for i in sen:
+for i in sen.lower():
     if i.isalpha():
         if i in vowel_list:
             vowel += 1
@@ -141,6 +141,7 @@ print(f"Consonant is total: {consonant}")
 num = 986876932681135
 # count = 0
 # for i in str(num):
+#     # print(i, end=' ')
 #     count += 1
 # print(count)
 
@@ -159,16 +160,21 @@ while num > 0:
     num = num // 10
 print(rev_num)
 
+# for i in str(num):
+#     rev_num = i+ rev_num
+# revd_num=int(rev_num)
+# print(revd_num)
+
 #Exercise 15. Find largest and smallest digit in a number
 num = 19384
-smallest = 0
-largest = 9
+smallest = 9
+largest = 0
 
 while num>0:
     digit = num%10
-    if digit > largest:
+    if digit >= largest:
         largest = digit
-    if digit < smallest:
+    if digit <= smallest:
         smallest = digit
     num = num//10
 
@@ -206,7 +212,7 @@ print(f"The factorial of {num} is {fact}")
 
 num= int(input("Enter a number: "))
 print(num, end="")
-while num !=1:
+while num != 1:
     if num%2 == 0:
         num = num//2
     else:
@@ -281,6 +287,7 @@ for i in range(1,rows+1):
     # for star
     for k in range(2*i-1):
         print("* ", end=' ')
+    
     print()
 
 # Exercise 26. Print full multiplication table(1 to 10)
@@ -356,7 +363,6 @@ for i in num:
 even.extend(odd) #new_list = even + odd
 print(f"Segregated List: {even}") # print(new_list)
 
-
 # Exercise 32. List Rotation: Rotate elements left by k positions
 # Practice Problem: Given a list and an integer k, rotate the list to the left by k positions.
 # For example, if k=2, the first two elements move to the end of the list.
@@ -375,7 +381,7 @@ text= "apple banana mango orange palm guava"
 words =  text.split() #change the text into the list.
 print(words)
 
-freq = {}
+freq = {} 
 
 for i in words:
     if i in freq:
