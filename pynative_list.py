@@ -129,3 +129,73 @@ list_num= [1,2,3,4,5,6,7,8]
 middle= (len(list_num)//2)-1
 res = list_num[middle: middle+3 ]
 print(res)
+
+# Exercise 12.Swap two elements at given indices
+# Practice Problem: Write a script to swap the positions of two elements 
+# in a list based on their indices.
+list_num=[1,2,3,4,5,6]
+
+# temp = list_num[0]
+# list_num[0]=list_num[2]
+# list_num[2] = temp
+# print(list_num)
+
+# Pythonic way... Tuple unpacking
+
+list_num[0], list_num[2] = list_num[2], list_num[0]
+print(list_num)
+
+# Exercise 13. Access Nested Lists (Simple Indexing)
+# Practice Problem: Given a “list of lists,” 
+# access a specific item hidden inside the inner list.
+
+Nested_List = [[1, 2], [3, 4, 5], [6, 7]]
+
+# goal = 5
+# for row_indx, row in enumerate(Nested_List):
+#     for col_indx, col in enumerate(row):
+#         if col == goal:
+#             print(f"found the accessed value at row{row_indx} column{col_indx}")
+value = Nested_List[1][2]
+print(f"Accessed value: {value}")
+
+# Exercise 14. Check if List Contains a Specific Item
+list_c= ['apple', 'banana', 'mango']
+
+checker = input('Enter your fruits to check:')
+
+if checker in list_c:
+    print('Yes, It is in the list.')
+else:
+    print('No, It is not in the list')
+
+
+# Find the longest string in the list
+
+list_c= ['apple', 'banana', 'mango',  'water melon','pomegranate']
+
+long_str = max(list_c, key = len)
+print(long_str)
+
+# Exercise 16. Turn Every Item of a List into its Square (List Comprehension)
+list1= [1,2,3,4,5]
+print(f"Original list: {list1}")
+list_com=[i*i for i in list1]
+print(f"After square operation: {list_com}")
+
+# Exercise 17. Count occurrences of an item. No looping
+numlist=[10,20,10,40,50,60]
+target = 10
+
+counter = numlist.count(10)
+print(f"{target} is {counter} times in the list.")
+
+
+#Exercise 18. Remove All Occurrences of a Specific Item
+# wrong way to this:
+rmv = numlist.remove(10)
+print(numlist)
+# Because remove only delete the first occurance.
+# proper way:
+nw_list=[i for i in numlist if i != target]
+print(nw_list)
