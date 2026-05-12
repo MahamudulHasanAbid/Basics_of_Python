@@ -239,6 +239,16 @@ b= ["thon", " ", "me"]
 res =[i+j for i,j in zip(a,b)]
 print(res)
 
+# Exercise 23. Iterate Both lists simultaneously. zip() is the Safe Parallel Iterator.
+c= [10,20,30]
+d= [100, 200, 300]
+res = [ [i, j] for i,j in zip(c,d)]
+print(res)
+
+# or
+for i,j in zip(c,d):
+    print(f"{i} {j}")
+
 # Exercise 24. Add New Item After a Specified Item
 lst= [10,20,30,40]
 target = 20
@@ -249,3 +259,150 @@ index =  lst.index(target)
 
 lst.insert(index+1, new_val)
 print(lst)
+
+# Exercise 25. Replace List’s Item with New Value if Found
+# Practice Problem: Find the first occurrence of a specific value in a list and replace it with a new value.
+
+talika = [5,10, 20 ,15,25]
+find = 20
+replace = 200
+
+if find in talika:
+    index = talika.index(find)
+    talika[index] = replace
+print(talika)
+
+# Exercise 26. Find the second largest number in the list.
+lst = [12, 35, 1, 12, 34, 1,35]
+
+desc= sorted(set(lst), reverse=True)
+print(desc)
+if len(lst) < 2:
+    print("There is no second value.")
+else:
+    print(f" Second largets {desc[1]}")
+
+# Exercise 27. Find the most frequent element
+# Practice Problem: Create a script that identifies the “Mode” of a list—the element 
+# that appears most frequently. If there is a tie, 
+# returning one of the top elements is sufficient for this exercise.
+list5 =  [1, 3, 3, 2, 1, 1, 4, 3, 3]
+count = 0
+frequency={}
+for rw_indx, rw in enumerate(list5):
+    if rw in frequency:
+        frequency[rw] += 1 
+    else:
+        frequency[rw] = 1
+mode = max(frequency, key = frequency.get)
+print(f"{mode} is the most frequent element in the list.")
+
+# Or we can do this:
+def find_mode(lst):
+    frequency = {}
+
+    for i in lst:
+        frequency[i] = frequency.get(i, 0)+1
+    
+    mode = max(frequency, key = frequency.get)
+    return mode
+
+list5 =  [1, 3, 3, 2, 1, 1, 4, 3, 3]
+res = find_mode(list5)
+print(f"Mode of the list: {res}")
+
+# Exercise 28. Extract Every Nth Element from a List
+def extrct_nth(lst, n):
+    nth_lst= lst[::n]
+
+    return nth_lst
+
+my_list = ['a','b','c','d','e','f','g','h','i','j','k',]
+n_val = 3
+
+res = extrct_nth(my_list, n_val)
+print(res)
+
+# Exercise 29. Check if list is palindrome
+def pal_checker(lst):
+    rev = lst[::-1]
+    if lst == rev:
+        return True
+    else:
+        False
+
+pal_list = [1,2,3,2,1]
+res = pal_checker(pal_list)
+
+print(f"Is palindrome? {pal_checker}")
+
+# Or we can do this:
+def pal_checker(lst):
+    return lst == lst[::-1]
+
+pal_list1 = [1,2,3,2,1]
+pal_list2 = [1,2,3,4,5]
+
+print(f"{pal_list1} is palindrome? {pal_checker(pal_list1)}")
+print(f"{pal_list2} is palindrome? {pal_checker(pal_list2)}")
+
+# Exercise 30. Find All Common Elements Between Three Lists
+
+lis_a = [1,5,10,20]
+lis_b = [6,7,20,80,100]
+lis_c = [3, 4,15,20,30,70,80]
+
+common = set(lis_a).intersection(lis_b,lis_c)
+print(list(common))
+
+# Or we can do this 
+def common_checker(l1,l2,l3):
+    common = set(l1) & set(l2) & set(l3)
+
+    return list(common)
+
+lis_a = [1,5,10,20]
+lis_b = [6,7,20,80,100]
+lis_c = [3, 4,15,20,30,70,80]
+
+result = common_checker(lis_a, lis_b, lis_c)
+
+print(result)
+
+# Exercise 31. Filter Strings by Length in a List
+# Practice Problem: Write a function that takes a list of strings and an integer k. 
+# The function should return a new list containing only the strings 
+# that have a length greater than or equal to k.
+
+fruits = ["apple","banana","Chery","Pomegranate","Watermelon","pineapple"]
+length = 6
+def func(lst, k):
+    update_list = [i for i in lst if len(i)>= k]
+
+    return update_list
+
+res = func(fruits, length)
+print(res)
+
+# Exercise 32. Check if List is Sorted. (all() for checking all are true)
+# Practice Problem: Create a function that determines if a list of numbers is sorted 
+# in non-decreasing (ascending) order. Return True if it is, and False otherwise.
+
+def sort_checker(lst):
+    return lst == sorted(lst)
+
+list_d = [10, 20, 30, 40, 25]
+
+res = sort_checker(list_d)
+
+print(f" Is Sorted: {res}")
+
+# Or we can do this:
+def sort_checker(lst):
+    return all(lst[i] <= lst[i+1] for i in range(len(lst)-1) )
+
+nums1 = [10, 20, 30, 40]
+nums2 = [10, 20, 30, 25, 40]
+
+print(f" Is Sorted: {sort_checker(nums1)}")
+print(f" Is Sorted: {sort_checker(nums2)}")
