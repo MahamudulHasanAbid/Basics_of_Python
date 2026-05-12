@@ -199,3 +199,53 @@ print(numlist)
 # proper way:
 nw_list=[i for i in numlist if i != target]
 print(nw_list)
+
+# Exercise 19. Remove Empty Strings from a List of Strings(strip())
+
+name = ["Mike", "Tyson", "Hitler", "Zengish","", "Zoro", " "]
+
+cleaned_names = [i for i in name if i.strip()]
+print(f"Cleaned List: {cleaned_names}")
+
+# Or
+cln_names = list(filter(None, name))
+print(cln_names)
+
+# Exercise 20. Remove duplicates from a list. (dict.fromkeys())
+
+duplicates = [12, 12, 22, 21, 22, 10, 11]
+
+rem_duplicates = list(dict.fromkeys(duplicates)) #Preserves order
+print(f"Unique list: {rem_duplicates}")
+
+# or
+rmvd_list = set(duplicates) #No ordering
+res_list = list(rmvd_list)
+print(res_list)
+print(rmvd_list)
+
+# Exercise 21. List comprehension for filtering numbers
+
+data = [1,2,3,4,5,6,7,8,9,10]
+
+even = [i for i in data if i%2 == 0]
+print(even)
+
+# Exercise 22. Concatenate Two lists Index-wise (zip())
+
+a= ["Py", "is", "aweso"]
+b= ["thon", " ", "me"]
+
+res =[i+j for i,j in zip(a,b)]
+print(res)
+
+# Exercise 24. Add New Item After a Specified Item
+lst= [10,20,30,40]
+target = 20
+new_val = 43
+
+# Find the target
+index =  lst.index(target)
+
+lst.insert(index+1, new_val)
+print(lst)
