@@ -192,6 +192,8 @@ print(f"{target} is {counter} times in the list.")
 
 
 #Exercise 18. Remove All Occurrences of a Specific Item
+numlist=[10,20,10,40,50,60]
+target = 10
 # wrong way to this:
 rmv = numlist.remove(10)
 print(numlist)
@@ -406,3 +408,66 @@ nums2 = [10, 20, 30, 25, 40]
 
 print(f" Is Sorted: {sort_checker(nums1)}")
 print(f" Is Sorted: {sort_checker(nums2)}")
+
+#Exercise 33. List to Dictionary conversion 
+
+keys = ["name", "age", "city"]
+values = ["Alice", 25, "New York"]
+info_dict = {}
+
+result = dict(zip(keys, values))
+print(result)
+
+# Exercise 34. Find the Difference Between Two Lists
+# Practice Problem: Write a function that finds the “difference” between two lists—specifically,
+# all elements that are present in the first list but not in the second list.
+#  concise but not controllable approach
+List_A= [1, 2, 3, 4, 5]
+List_B= [2, 4, 6]
+
+diff = list(set(List_A) - set(List_B))
+print(diff)
+
+# Controlled structure...
+
+def difference(lst_a, lst_b):
+    stored= set(lst_b)
+    res = [i for i in lst_a if i not in stored]
+    return res
+lst_a = [1,2,3,4,5]
+lst_b = [2,4,6]
+
+diff = difference(lst_a, lst_b)
+print(diff)
+
+# Exercise 35. Remove negative numbers in places.
+
+natural_num = [-1,4,-2,5, 2,-22]
+pos_num = []
+for i in natural_num:
+    if i > 0:
+        pos_num.append(i)
+
+print(pos_num)
+# This solution is not the correct one cause the main list stays unchanged. Reverse loop:safe for in-place deletion
+
+def rmv_neg_inplace(lst):
+    for i in range(len(lst)-1, -1, -1):
+        if lst[i]<0:
+            del lst[i] 
+    return lst
+natural_num = [-1,4,-2,5, 2,-22]
+pos_num = rmv_neg_inplace(natural_num)
+print(pos_num )
+
+# Exercise 36. Extend Nested List by Adding a Sublist
+# Practice Problem: Write a function that iterates through a list of nested lists and appends a specific sublist (or value) to each inner list.
+
+nested_list = [['apple', 'banana'], ['cherry', 'date']]
+add_val = "elderberry"
+
+for  i in nested_list:
+    i.append(add_val)
+
+print(nested_list)
+
