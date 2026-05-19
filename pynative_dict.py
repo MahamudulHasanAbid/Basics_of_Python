@@ -197,4 +197,162 @@ data = {
 data["school"]["department"]["class"]["students"] = 35
 print(data)
 
+# Exercise 18: Dictionary Comprehension.
+# Write a Python program to generate a dictionary of the squares of numbers from 1 to 10 using a dictionary comprehension in a single line
+
+sqr_num = {i:i*i for i in range(1,11)}
+print(sqr_num)
+
+# Exercise 19: Filter Dictionary
+# keep only students scores greater than 60
+
+scores = {"Alice": 82, "Bob": 45, "Carol": 91, "Dave": 58, "Eve": 73}
+
+passed_scores = {i:j for i,j in scores.items() if j>60}
+print(passed_scores)
+
+# Exercise 20: Key of Minimum Value
+
+stock = {"apples": 34, "bananas": 12, "oranges": 57, "grapes": 8, "mangoes": 23}
+
+low_val = min(stock, key = stock.get)
+# low_val = min(dict.items(stock), key= lambda i: i[1])
+print(low_val) 
+
+# Exercise 21: Key of Maximum Value
+
+scores = {"Alice": 88, "Bob": 95, "Carol": 72, "Dave": 95, "Eve": 84}
+
+top_scorer = max(scores, key=scores.get)
+# top_score = max(dict.items(scores), key = lambda i: i[-1])
+top_score = max(scores.values())
+
+all_top = {i:j for i,j in scores.items() if j==top_score}
+print(top_scorer)
+print(top_score)
+print(all_top)
+
+#Exercise 22: List of Tuples to Dictionary
+# Problem Statement: Write a Python program to convert a list of key-value tuples into a dictionary without using any loops.
+
+pairs = [("name", "Alice"), ("age", 25), ("city", "Paris")]
+
+dict_paris = dict(pairs)
+print(dict_paris)
+
+# Exercise 23: Find Common Keys
+
+d1 = {"a": 1, "b": 2, "c": 3} 
+d2 = {"b": 20, "c": 30, "d": 40}
+
+# common= set(d1).intersection(set(d2))
+common = d1.keys() & d2.keys()
+print(common)
+print(type(common))
+
+# Exercise 25: Dictionary Intersection
+
+d1 = {"a": 1, "b": 2, "c": 3} 
+d2 = {"a": 1, "b": 99, "c": 3}
+
+common = d1.keys() & d2.keys()
+
+common_val = {i:d1[i] for i in common if d1[i] == d2[i]}
+print(common_val)
+
+# Exercise 26: Word Count
+
+text = "the cat sat on the mat the cat"
+counter_dict ={}
+for i in text.lower().split():
+    counter_dict[i] = counter_dict.get(i, 0) + 1
+
+print(counter_dict)
+
+# Remove NONE values
+
+data = {"name": "Alice", "age": None, "city": "Paris", "score": None}
+
+clean_data = {i:j for i,j in data.items() if j is not None}
+
+print(clean_data)
+
+# Exercise 28: Sort Dictionary by Keys
+
+data = {"banana": 3, "apple": 5, "cherry": 1, "date": 4}
+
+sort_data = dict(sorted(data.items()))
+
+print(sort_data)
+
+# Exercise 29: Sort Dictionary by Values
+
+scores = {"Alice": 88, "Bob": 72, "Charlie": 95, "Diana": 60}
+
+sort_dict = dict(sorted(scores.items(), key= lambda i:i[1], reverse= True))
+
+print(sort_dict)
+
+# Exercise 30: Unique Values Check:
+
+data = {"a": 1, "b": 2, "c": 3, "d": 2}
+
+unique_data = set(data.values())
+
+res = len(data) == len(unique_data)
+
+print(res)
+
+# Exercise 31: Check for Subset
+
+main = {"a": 1, "b": 2, "c": 3, "d": 4}
+subset = {"a": 1, "c": 3}
+
+is_subset = subset.items() <= main.items()
+
+print(res)
+
+# Exercise 32: Sort Dictionary by Value Length
+
+words = {"a": "banana", "b": "kiwi", "c": "strawberry", "d": "fig"}
+
+print(words.items())
+sor_words = dict(sorted(words.items(), key = lambda i: len(i[1])))
+print(sor_words)
+
+# Exercise 33: Key with Longest List
+
+data = {"fruits": ["apple", "banana", "cherry"], "vegs": ["carrot"], "grains": ["rice", "wheat"]}
+
+item = max(data.items(), key= lambda i: len(i[1]))[0]
+print(item)
+
+# Exercise 34: Convert Dictionary to JSON
+import json
+
+person = {"name": "Alice", "age": 30, "address": {"city": "Mumbai", "pin": "400001"}}
+
+res = json.dumps(person, indent=4)
+print(res)
+
+# Exercise 35: Invert Dictionary
+# Problem Statement: Write a Python program to invert a dictionary by swapping its keys and values, so each original value becomes a key and each original key becomes the corresponding value.
+
+original = {"a": 1, "b": 2, "c": 3}
+
+swap = {i:j for j,i in original.items()} # values must be unique
+print(swap)
+
+# Exercise 36: Invert Dictionary with duplicates
+
+original = {"a": 1, "b": 2, "c": 1, "d": 3, "e": 2}
+
+invert_dic = {}
+for i,j in original.items():
+     invert_dic.setdefault(j,[]).append(i)
+
+print(invert_dic)
+
+# Exercise 37: Flatten Nested Dictionary
+nested = {"a": 1, "b": {"c": 2, "d": {"e": 3, "f": 4}}}
 
