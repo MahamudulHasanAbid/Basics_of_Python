@@ -229,3 +229,66 @@ machine = CoffeeMachine(400, 50, 300)
 machine.make_latte()
 machine.make_latte()
 machine.make_latte()
+
+# Exercise 12:  Write a Python program to create a Vehicle class with a class attribute color = "White" that is shared by all instances.
+#  Create two vehicle objects and demonstrate that both share the same default color,
+# then show that changing the class attribute updates all instances that have not overridden it.
+
+class Vehicle:
+    color = 'White'
+
+    def __init__(self, name, speed):
+        self.name = name
+        self.speed = speed
+
+    # def show_data(self):
+    #     print(f"{self.name}- Color:{self.color}, speed:{self.speed}")
+
+vehicle_1 = Vehicle("Tesla", 200)
+vehicle_2 = Vehicle("Audi", 220)
+
+print(f"{vehicle_1.name}- Color:{vehicle_1.color}, speed:{vehicle_1.speed}")
+print(f"{vehicle_2.name}- Color:{vehicle_2.color}, speed:{vehicle_2.speed}")
+
+Vehicle.color = "Red"
+
+print(f"{vehicle_1.name}- Color:{vehicle_1.color}, speed:{vehicle_1.speed}")
+print(f"{vehicle_2.name}- Color:{vehicle_2.color}, speed:{vehicle_2.speed}")
+
+# Exercise 13:Write a Python program to create a Vehicle parent class with name and max_speed attributes and a display() method. 
+# Then create a Bus child class that inherits everything from Vehicle without adding anything new, 
+# and confirm that an instance of Bus can access the parent’s method.
+
+class Vehicle:
+    def __init__(self, name, max_speed):
+        self.name = name
+        self.max_speed = max_speed
+
+    def display(self):
+        print(f"Vehicle: {self.name} Max Speed:{self.max_speed}")
+    
+class Bus(Vehicle):
+    pass
+
+volvo = Bus("School Bus", "250")
+volvo.display()
+
+# Exercise 14: Write a Python program where a Vehicle parent class has a seating_capacity() method that accepts a capacity argument. 
+# Create a Bus child class that overrides this method to provide a default seating capacity of 50, using super() to call the parent’s version internally
+
+class Vehicle:
+    def __init__(self, name, max_speed):
+        self.name = name
+        self.max_speed = max_speed
+
+    def seating_capacity(self, capacity):
+        print(f"{self.name} has the maximum capacity of {capacity}")
+
+class Bus(Vehicle):
+    def seating_capacity(self):
+        return super().seating_capacity(50)
+
+bus1 = Bus("School Bus", 80)
+
+bus1.seating_capacity()
+
