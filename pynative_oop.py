@@ -292,3 +292,158 @@ bus1 = Bus("School Bus", 80)
 
 bus1.seating_capacity()
 
+# Exercise 15:  Write a Python program that creates a Vehicle parent class with a base fare, 
+# then extends a Taxi child class that adds a 10% maintenance fee on top of the base fare using super().
+
+class Vehicle:
+    def __init__(self, base_fare):
+        self.base_fare = base_fare
+
+class Taxi(Vehicle):
+    def __init__(self, base_fare):
+        super().__init__(base_fare)
+        self.maintanance_fee = base_fare * 0.1
+
+    def total_fare(self):
+        total = self.base_fare + self.maintanance_fee
+        return total
+taxi = Taxi(500)
+
+print(f"Total fare with maintanance fee: {taxi.total_fare()}")
+
+#Exercise 16: Write a Python program that defines an Animal base class with a speak() method, 
+# then overrides it in Dog and Cat subclasses to return their respective sounds.
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        return "Some sound"
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+    
+class Cat(Animal):
+    def speak(self):
+        return "Mewao"
+
+dog = Dog("Dog")
+cat = Cat("Cat")
+
+print(f"{dog.name} sound: {dog.speak()}")
+print(f"{cat.name} sound: {cat.speak()}")
+
+#Exercise 17: Write a Python program that defines an Employee base class,
+#  then creates FullTimeEmployee and PartTimeEmployee subclasses,
+#  each implementing different pay calculation logic.
+
+class Employee:
+    def __init__(self, name):
+        self.name = name
+     
+    def calculate_pay(self):
+        return 0
+
+class FullTimeEmployee(Employee):
+    def __init__(self, name, annual_salary):
+        super().__init__(name)
+        self.annual_salary = annual_salary
+
+    def calculate_pay(self):
+        return self.annual_salary/12
+
+class PartTimeEmployee(Employee):
+    def __init__(self, name, hourly_rate, hours_worked):
+        super().__init__(name)
+        self.hourly_rate = hourly_rate
+        self.hours_worked = hours_worked
+
+    def calculate_pay(self):
+        return self.hourly_rate * self.hours_worked * 24
+    
+
+ft = FullTimeEmployee("Asadullah", 400000)
+pt = PartTimeEmployee("Mizan", 400, 9)
+
+print(f"{ft.name} get {ft.calculate_pay():.2f} BDT per month.")
+print(f"{pt.name} get {pt.calculate_pay():.2f} BDT per month.")
+
+# Exercise 18. Write a Python program that defines a Shape base class with an area() method, 
+# then implements it in Circle, Square, and Triangle subclasses using the appropriate geometric formulas.
+
+class Shape:
+    def __init__(self):
+        pass
+    def area(self):
+        return 0
+    
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14159 * self.radius ** 2
+
+class Square(Shape):
+    def __init__(self, side):
+        self.side = side
+    def area(self):
+        return self.side ** 2
+
+class Triangle(Shape):
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+
+    def area(self):
+        return 0.5 * self.base * self.height
+
+circle = Circle(7)
+square = Square(4)
+triangle = Triangle(6, 8)
+
+print(f"Circle area: {circle.area()}")
+print(f"Square area: {square.area()}")
+print(f"Triangle area: {triangle.area()}")
+
+# Exercise 19:  Write a Python program that defines a Media base class, then creates Book, Magazine, and DVD subclasses, 
+# each with type-specific attributes and a describe() method.
+
+class Media:
+    def __init__(self, title, price):
+        self.title = title
+        self.price = price
+    def show(self):
+        return f"{self.title} - Rs.{self.price}"
+class Book(Media):
+    def __init__(self, title, price, author):
+        super().__init__(title, price)
+        self.author = author
+    def show(self):
+        return f"{self.title} by {self.author} -RS{self.price}"
+
+class Magazine(Media):
+    def __init__(self, title, price, author):
+        super().__init__(title, price)
+        self.author = author
+    def show(self):
+        return f"{self.title} by {self.author} -RS{self.price}"
+
+class DVD(Media):
+    def __init__(self, title, price, author):
+        super().__init__(title, price)
+        self.author = author
+    
+    def show(self):
+        return f"{self.title} by {self.author} -RS{self.price}"
+
+items=[
+    Book("Hath a khori", 100, "Hakim"),
+    Magazine("Hath a khori", 200, "Hasim"),
+    DVD("Vice city", 300, "Moron")
+]
+
+for item in items:
+    print(item.show())
