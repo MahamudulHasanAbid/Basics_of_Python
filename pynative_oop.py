@@ -447,3 +447,141 @@ items=[
 
 for item in items:
     print(item.show())
+
+# Exercise 20. Write a Python program that creates an Order class with a total amount, 
+# then creates a DiscountedOrder subclass that applies a 10% discount to the total.
+
+class Order:
+    def __init__(self, item, total_amount):
+        self.item = item
+        self.total_amount = total_amount
+
+    def final_amount(self):
+        return self.total_amount
+
+class DiscountedOrder(Order):
+    def __init__(self, item, total_amount):
+        super().__init__(item, total_amount)
+
+
+    def final_amount(self):
+        final_amount = self.total_amount * 0.9
+        return final_amount 
+    
+price = DiscountedOrder('Orange',220)
+
+print(f"Price:{price.total_amount} \nAfter Discount:{price.final_amount():.2f}")
+
+# Exercise 21.  Write a Python program that defines a Vehicle base class 
+# and creates Bike, Truck, and Bus subclasses, 
+# each defining a unique max_speed attribute and a describe() method.
+
+class Vehicle:
+    def __init__(self,name, max_speed):
+        self.name = name
+        self.max_speed = max_speed
+
+    def describe(self):
+        return "Some Text"
+
+        
+class Bike(Vehicle):
+    def __init__(self,name, max_speed):
+        super().__init__(name, max_speed)
+    def describe(self):
+        return f"{self.name} has max speed: {self.max_speed}"
+    
+class Truck(Vehicle):
+    def __init__(self,name, max_speed):
+        super().__init__(name, max_speed)
+    def describe(self):
+        return f"{self.name} has max speed: {self.max_speed}"
+    
+class Bus(Vehicle):
+    def __init__(self,name, max_speed):
+        super().__init__(name, max_speed)
+    def describe(self):
+        return f"{self.name} has max speed: {self.max_speed}"
+    
+bike = Bike("Yamaha", 180)
+truck = Truck("Mahindra", 80)
+bus = Bus("Volvo", 280)
+
+print(bike.describe())
+print(truck.describe())
+print(bus.describe())
+
+#Exercise 22: Write a Python program that creates objects from multiple classes 
+# and uses the built-in type() function  to identify which class each object belongs to.
+class Dog:
+    pass
+class Cat:
+    pass
+class Vehicle:
+    pass
+
+d = Dog()
+c = Cat()
+v = Vehicle()
+
+objects = {'d':d, 'c':c,'v':v}
+
+for name,object in objects.items():
+    print(f"{name} is of type:{type(object)}")
+
+### Exercise 23: Write a Python program that uses isinstance() to check whether an object is an instance of a given class,
+#  and issubclass() to check whether one class is a subclass of another.
+
+class Animal:
+    pass    
+class Dog(Animal):
+    pass
+d = Dog()
+# isinstance(obj, ClassName), issubclass(ChildClass, ParentClass)
+
+print("Is d an instance of Dog?", isinstance(d, Dog))
+print("Is d an instance of Animal?", isinstance(d, Animal))
+print("Is Dog a subclass of Animal?", issubclass(Dog, Animal))
+print("Is Animal a subclass of Dog?", issubclass(Animal, Dog))
+
+# Exercise 24: Write a Python program that creates a Vector class representing a 2D vector, 
+# and implements the __add__ dunder method so that two Vector objects can be added using the + operator.
+
+# operator overloading, a powerful OOP feature that lets your custom classes behave like built-in types.
+
+class Vector:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+    
+    def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+    
+v1 = Vector(2,5)
+v2 = Vector(4,3)
+
+result = v1 + v2
+print(result)
+
+# Exercise 25: Write a Python program that creates a Cart class that stores a list of items,
+#  and implements __len__ so that calling len(cart) returns the number of items currently in the cart.
+
+class Cart:
+    def __init__(self):
+        self.items = []
+    
+    def add_item(self, item):
+        self.items.append(item)
+    
+    def __len__(self):
+        return len(self.items)
+    
+cart = Cart()
+cart.add_item("Apple")
+cart.add_item("Banana")
+cart.add_item("Mango")
+
+print(f"Length of cart items: {len(cart)}")
