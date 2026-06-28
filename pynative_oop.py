@@ -585,3 +585,71 @@ cart.add_item("Banana")
 cart.add_item("Mango")
 
 print(f"Length of cart items: {len(cart)}")
+
+# Exercise 26: Write a Python program that creates a BankAccount class where the balance is stored as a private attribute __balance, 
+# and exposed safely through a @property getter and a setter that validates the value before updating it.
+
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance
+
+    @property
+    def balance(self):
+        return self.__balance
+    
+    @balance.setter
+    def balance(self, amount):
+        if amount<0:
+            print(f"Balance can not be negative.\n Invalid Balance...")
+        else:
+            self.__balance = amount
+        
+    def deposit(self, amount):
+        self.balance = self.__balance + amount
+    
+account = BankAccount(1000)
+print("Current balance:", account.balance)
+
+account.deposit(500)
+print("Current balance:", account.balance)
+
+account.balance = -200
+
+# Exercise 27: Write a Python program that creates a Multiplier class which stores a factor, 
+# and implements __call__ so that an instance of the class can be invoked directly like a function 
+# to multiply a given number by that factor.
+
+class Multiplier:
+    def __init__(self, factor):
+        self.factor = factor
+
+    def __call__(self, value):
+        return self.factor * value
+    
+triple = Multiplier(10)
+
+print(triple(3))
+
+# Exercise 28: Write a Python program that creates a Passenger class and a Flight class. 
+# The Flight class should manage a list of Passenger objects 
+# and block further bookings when the seat capacity is reached.
+
+class Passenger:
+    def __init__(self, p_id):
+        self.p_id = p_id
+class Flight:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.current_passanger = []
+    
+    def book_passanger(self, passanger):
+        self.passanger = passanger
+        if len(self.current_passanger)>= self.capacity:
+            print("Block further Booking")
+        else:
+            self.current_passanger.append(passanger)
+
+psngr = Flight(4)
+psngr.book_passanger('A012')
+print(f"{psngr}")
+
